@@ -14,7 +14,7 @@
             
             function convertData(geoCorMap,data){
                 var res = [];
-                for(var i=0;i<data.lenghth;++i){
+                for(var i=0;i<data.length;++i){
                     var geoCor = geoCorMap[data[i].name];
                     if(geoCor){
                         res.push({
@@ -230,7 +230,7 @@
                             trigger:'item',
                             // formatter:'{b0}: {c0}<br />{b1}: {c1}'
                             formatter:function(x){
-                                console.log(x);
+                                // console.log(x);
                                 if(x.name == ''){
                                     return;
                                 }
@@ -248,8 +248,49 @@
                                 color: ['lightskyblue','yellow', 'red']
                             }
                         },
+                        geo: {
+                            map: 'china',
+                            roam: true,
+                            itemStyle:{
+                                normal:{
+                                    // areaColor:'lightskyblue',
+                                    areaColor: {
+                                        type: 'radial',
+                                        x: 0.5,
+                                        y: 0.5,
+                                        r: 0.8,
+                                        colorStops: [{
+                                            offset: 0, color: 'rgba(255, 127, 0, 0)' // 0% 处的颜色
+                                        }, {
+                                            offset: 1, color: 'rgba(255, 127, 0, .5)' // 100% 处的颜色
+                                        }],
+                                        globalCoord: false // 缺省为 false
+                                    },
+                                    borderColor:"#eee"
+                                },
+                                emphasis:{
+                                    areaColor: {
+                                        type: 'radial',
+                                        x: 0.5,
+                                        y: 0.5,
+                                        r: 0.8,
+                                        colorStops: [{
+                                            offset: 0, color: 'rgba(0, 0, 255, 0)' // 0% 处的颜色
+                                        }, {
+                                            offset: 1, color: 'rgba(0, 0, 255, .5)' // 100% 处的颜色
+                                        }],
+                                        globalCoord: false // 缺省为 false
+                                    },
+                                    borderWidth:0
+                                }
+                            },
+                            nameMap:{
+                                "澳门特别行政区":"澳门",
+                                "香港特别行政区":"香港"
+                            },
+                        },
                         series:[
-                            {
+                        {
                             type:'map',
                             map:'china',
                             roam:true,
@@ -342,12 +383,8 @@
                                     show: true
                                 }
                             },
-                            itemStyle: {
-                                normal: {
-                                    color: '#ddb926'
-                                }
-                            }
-                        }]
+                        }
+                        ]
                     });
                 });
             });
