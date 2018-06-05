@@ -1,0 +1,71 @@
+{
+    "title": {
+        "text": "中国地图",
+        "subtext": "",
+        "sublink": "",
+        "left": "right"
+    },
+    "tooltip": {
+        "trigger": "item",
+        "showDelay": 0,
+        "transitionDuration": 0.2
+    },
+    "visualMap": {
+        "left": "right",
+        "min": 0,
+        "max": 100,
+        "inRange": {
+            "color": ["#313695", "#4575b4", "#74add1", "#abd9e9", "#e0f3f8", "#ffffbf", "#fee090", "#fdae61", "#f46d43", "#d73027", "#a50026"]
+        },
+        "text":["高分","低分"],           
+        "calculable": true
+    },
+    "toolbox": {
+        "show": true,
+        "orient": "vertical",
+        "left": "right",
+        "top": "center",
+        "feature": {
+            "dataView": {"readOnly": false},
+            "restore": {},
+            "saveAsImage": {}
+        }
+    },
+    "series": [
+        {
+            "name": "数据",
+            "type": "heatmap",
+            "roam": true,
+            "map": "china",
+            "coordinateSystem": "geo",
+            "itemStyle":{
+                "emphasis":{"label":{"show":true}}
+            },
+            "textFixed": {
+                "Alaska": [20, -20]
+            },
+            "data":[]
+        }
+    ],
+    "geo": {
+        "map": "china",
+        "roam": true,
+        "label": {
+            "emphasis": {
+                "show": true,
+                "textStyle": {
+                    "color": "#eee"
+                }
+            }
+        },
+        "itemStyle": {
+            "normal": {
+                "areaColor": "#323c48",
+                "borderColor": "#111"
+            },
+            "emphasis": {
+                "areaColor": "#2a333d"
+            }
+        }
+    }
+}

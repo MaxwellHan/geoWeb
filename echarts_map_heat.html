@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="js/jquery.js"></script>
+        <script src="js/echarts.js"></script>
+    </head>
+    <body>
+        <div id="main" style="width: 2400px;height:1600px;"></div>
+        <script type="text/javascript">
+            var map_url = "mapdata/china.json";
+            // var map_url = "mapdata/geometryCouties/511100.json";
+            var option_url = "options/option.json";
+            var data_url = "data/data1.json";
+
+            var echarts_map = echarts.init(document.getElementById("main"),'dark', {renderer: 'SVG'});
+
+            $.getJSON(map_url,function(geoJson){
+                echarts.registerMap("china",geoJson);
+                $.getJSON(option_url,function(option){
+                    $.getJSON(data_url,function(data){
+                        option.series[0].data=data.data;
+                        echarts_map.setOption(option);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
